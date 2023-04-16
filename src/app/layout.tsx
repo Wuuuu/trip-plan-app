@@ -1,5 +1,7 @@
-import Navbar from "./compoments/navbar/Navbar";
 import { Nunito } from "@next/font/google";
+import ClinetOnly from "./compoments/ClientOnly";
+import Navbar from "./compoments/navbar/Navbar";
+import Modal from "./compoments/modals/Modal";
 import "./globals.css";
 
 export const metadata = {
@@ -10,6 +12,7 @@ export const metadata = {
 const font = Nunito({
   subsets: ["latin"],
 });
+
 export default function RootLayout({
   children,
 }: {
@@ -18,10 +21,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <div>
+        <ClinetOnly>
+          <Modal
+            actionLabel="Submit"
+            isOpen
+            title="hello nextjs"
+          />
           <Navbar />
-        </div>
-        <div>{children}</div>
+        </ClinetOnly>
+        {children}
       </body>
     </html>
   );
