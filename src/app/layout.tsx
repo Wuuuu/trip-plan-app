@@ -1,18 +1,28 @@
-import './globals.css'
+import Navbar from "./compoments/navbar/Navbar";
+import { Nunito } from "@next/font/google";
+import "./globals.css";
 
+export const metadata = {
+  title: "Trip Plan",
+  description: "this is Trip Plan page",
+};
+
+const font = Nunito({
+  subsets: ["latin"],
+});
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
-      <body>{children}</body>
+      <body className={font.className}>
+        <div>
+          <Navbar />
+        </div>
+        <div>{children}</div>
+      </body>
     </html>
-  )
+  );
 }
