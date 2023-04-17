@@ -1,8 +1,9 @@
 import { Nunito } from "@next/font/google";
 import ClinetOnly from "./compoments/ClientOnly";
 import Navbar from "./compoments/navbar/Navbar";
-import Modal from "./compoments/modals/Modal";
+import RegisterModal from "./compoments/modals/RegisterModal";
 import "./globals.css";
+import ToasterProvider from "./providers/ToasterProvider";
 
 export const metadata = {
   title: "Trip Plan",
@@ -22,11 +23,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <ClinetOnly>
-          <Modal
-            actionLabel="Submit"
-            isOpen
-            title="hello nextjs"
-          />
+          <ToasterProvider />
+          <RegisterModal />
           <Navbar />
         </ClinetOnly>
         {children}
