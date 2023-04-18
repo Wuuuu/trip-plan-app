@@ -4,7 +4,6 @@ import prisma from "@/app/libs/prismadb";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  debugger;
   const body = await request.json();
   const { email, name, password } = body;
 
