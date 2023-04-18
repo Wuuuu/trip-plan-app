@@ -2,8 +2,10 @@ import { Nunito } from "@next/font/google";
 import ClinetOnly from "./compoments/ClientOnly";
 import Navbar from "./compoments/navbar/Navbar";
 import RegisterModal from "./compoments/modals/RegisterModal";
-import "./globals.css";
 import ToasterProvider from "./providers/ToasterProvider";
+import LoginModal from "./compoments/modals/LoginModal";
+
+import "./globals.css";
 
 export const metadata = {
   title: "Trip Plan",
@@ -24,6 +26,7 @@ export default function RootLayout({
       <body className={font.className}>
         <ClinetOnly>
           <ToasterProvider />
+          <LoginModal />
           <RegisterModal />
           <Navbar />
         </ClinetOnly>
