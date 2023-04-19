@@ -3,6 +3,7 @@ import ClinetOnly from "./compoments/ClientOnly";
 import Navbar from "./compoments/navbar/Navbar";
 import RegisterModal from "./compoments/modals/RegisterModal";
 import LoginModal from "./compoments/modals/LoginModal";
+import RentModal from "./compoments/modals/RentModal";
 import ToasterProvider from "./providers/ToasterProvider";
 import getCurrentUser from "./actions/getCurrentUser";
 
@@ -28,6 +29,7 @@ export default async function RootLayout({
       <body className={font.className}>
         <ClinetOnly>
           <ToasterProvider />
+          <RentModal />
           <LoginModal />
           <RegisterModal />
           <Navbar currentUser={currentUser} />
