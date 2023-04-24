@@ -1,36 +1,54 @@
-import ClinetOnly from "./compoments/ClientOnly";
+import ClientOnly from "./compoments/ClientOnly";
 import Container from "./compoments/Container";
 import EmptyState from "./compoments/EmptyState";
 import ListingCard from "./compoments/listings/ListingCard";
 
-import getListings from "./actions/getListings";
 import getCurrentUser from "./actions/getCurrentUser";
+import getListings, { IListingsParams } from "./actions/getListings";
 
-export default async function Home() {
-  const listings = await getListings();
+interface HomeProps {
+  searchParams: IListingsParams;
+}
 
+const Home = async ({ searchParams }: HomeProps) => {
+  const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
-  const isEmpty = false;
-  if (isEmpty) {
+
+  if (listings.length === 0) {
     return (
-      <ClinetOnly>
+      <ClientOnly>
         <EmptyState showReset />
-      </ClinetOnly>
+      </ClientOnly>
     );
   }
+
   return (
-    <ClinetOnly>
+    <ClientOnly>
       <Container>
-        <div className="pt-24 grid grid-cols-1 sm:grid-col-2 md:grid-col-3 lg:grid-cols-4 xl:grid-col-5 2xl:grid-cols-6 gap-8">
-          {listings.map((item: any) => (
+        <div
+          className="
+            pt-24
+            grid 
+            grid-cols-1 
+            sm:grid-cols-2 
+            md:grid-cols-3 
+            lg:grid-cols-4
+            xl:grid-cols-5
+            2xl:grid-cols-6
+            gap-8
+          "
+        >
+          {listings.map((listing: any) => (
             <ListingCard
               currentUser={currentUser}
-              key={item.id}
-              data={item}
+              key={listing.id}
+              data={listing}
             />
           ))}
         </div>
       </Container>
-    </ClinetOnly>
+    </ClientOnly>
   );
-}
+};
+
+export default Home;
