@@ -1,18 +1,20 @@
 "use client";
 
-import { signIn } from "next-auth/react";
 import { useCallback, useState } from "react";
-import useLoginModal from "@/app/hooks/useLoginModal";
-import useRegisterModal from "@/app/hooks/useRegisterModal";
-import { AiFillGithub } from "react-icons/ai";
-import { FcGoogle } from "react-icons/fc";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import Modal from "./Modal";
-import Heading from "../Heading";
-import Input from "../inputs/Input";
-import Button from "../Button";
+import { signIn } from "next-auth/react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
+import { AiFillGithub } from "react-icons/ai";
 import { useRouter } from "next/navigation";
+
+import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
+
+import Modal from "./Modal";
+import Input from "../inputs/Input";
+import Heading from "../Heading";
+import Button from "../Button";
 
 const LoginModal = () => {
   const router = useRouter();
@@ -31,25 +33,28 @@ const LoginModal = () => {
     },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = (values) => {
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
+
     signIn("credentials", {
-      ...values,
+      ...data,
       redirect: false,
-    }).then((res) => {
+    }).then((callback) => {
       setIsLoading(false);
-      if (res?.ok) {
+
+      if (callback?.ok) {
         toast.success("Logged in");
         router.refresh();
         loginModal.onClose();
       }
-      if (res?.error) {
-        toast.error(res.error);
+
+      if (callback?.error) {
+        toast.error(callback.error);
       }
     });
   };
 
-  const toggle = useCallback(() => {
+  const onToggle = useCallback(() => {
     loginModal.onClose();
     registerModal.onOpen();
   }, [loginModal, registerModal]);
@@ -61,21 +66,21 @@ const LoginModal = () => {
         subtitle="Login to your account!"
       />
       <Input
-        required
         id="email"
         label="Email"
         disabled={isLoading}
         register={register}
         errors={errors}
+        required
       />
       <Input
-        required
         id="password"
-        type="password"
         label="Password"
+        type="password"
         disabled={isLoading}
         register={register}
         errors={errors}
+        required
       />
     </div>
   );
@@ -95,24 +100,33 @@ const LoginModal = () => {
         icon={AiFillGithub}
         onClick={() => signIn("github")}
       />
-      <div className="text-neutral-500 text-center mt-4 font-light">
-        <div className="flex flex-row items-center justify-center gap-2">
-          <div>First time use Trip Plan?</div>
-          <div
-            className="text-neutral-800 cursor-pointer hover:underline"
-            onClick={toggle}
+      <div
+        className="
+      text-neutral-500 text-center mt-4 font-light"
+      >
+        <p>
+          First time using Airbnb?
+          <span
+            onClick={onToggle}
+            className="
+              text-neutral-800
+              cursor-pointer 
+              hover:underline
+            "
           >
+            {" "}
             Create an account
-          </div>
-        </div>
+          </span>
+        </p>
       </div>
     </div>
   );
+
   return (
     <Modal
-      title="Login"
       disabled={isLoading}
       isOpen={loginModal.isOpen}
+      title="Login"
       actionLabel="Continue"
       onClose={loginModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
