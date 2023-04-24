@@ -3,16 +3,24 @@ import ListingCard from "@/app/compoments/listings/ListingCard";
 import EmptyState from "@/app/compoments/EmptyState";
 
 import getListings from "@/app/actions/getListings";
-import { IListingsParams } from "../app/actions/getListings";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "@/app/compoments/ClientOnly";
 
 interface HomeProps {
-  searchParams: IListingsParams;
+  params: {
+    userId?: string;
+    guestCount?: number;
+    roomCount?: number;
+    bathroomCount?: number;
+    startDate?: string;
+    endDate?: string;
+    locationValue?: string;
+    category?: string;
+  };
 }
 
-const Home = async ({ searchParams }: HomeProps) => {
-  const listings = await getListings(searchParams);
+const Home = async ({ params }: HomeProps) => {
+  const listings = await getListings(params);
   const currentUser = await getCurrentUser();
 
   if (listings.length === 0) {
@@ -26,7 +34,6 @@ const Home = async ({ searchParams }: HomeProps) => {
   return (
     <ClientOnly>
       <Container>
-        <div>123</div>
         <div
           className="
             pt-24
