@@ -1,10 +1,11 @@
-import ClientOnly from "./compoments/ClientOnly";
-import Container from "./compoments/Container";
-import EmptyState from "./compoments/EmptyState";
-import ListingCard from "./compoments/listings/ListingCard";
+import Container from "@/app/compoments/Container";
+import ListingCard from "@/app/compoments/listings/ListingCard";
+import EmptyState from "@/app/compoments/EmptyState";
 
-import getCurrentUser from "./actions/getCurrentUser";
-import getListings, { IListingsParams } from "./actions/getListings";
+import getListings from "@/app/actions/getListings";
+import { IListingsParams } from "../app/actions/getListings";
+import getCurrentUser from "@/app/actions/getCurrentUser";
+import ClientOnly from "@/app/compoments/ClientOnly";
 
 interface HomeProps {
   searchParams: IListingsParams;
@@ -25,6 +26,7 @@ const Home = async ({ searchParams }: HomeProps) => {
   return (
     <ClientOnly>
       <Container>
+        <div>123</div>
         <div
           className="
             pt-24

@@ -22,7 +22,7 @@ export default async function getListings(params: IListingsParams) {
       startDate,
       endDate,
       category,
-    } = params;
+    } = params || {};
 
     let query: any = {};
 
