@@ -2,25 +2,16 @@ import Container from "@/app/compoments/Container";
 import ListingCard from "@/app/compoments/listings/ListingCard";
 import EmptyState from "@/app/compoments/EmptyState";
 
-import getListings from "@/app/actions/getListings";
+import getListings, { IListingsParams } from "@/app/actions/getListings";
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import ClientOnly from "@/app/compoments/ClientOnly";
 
 interface HomeProps {
-  params: {
-    userId?: string;
-    guestCount?: number;
-    roomCount?: number;
-    bathroomCount?: number;
-    startDate?: string;
-    endDate?: string;
-    locationValue?: string;
-    category?: string;
-  };
+  searchParams: IListingsParams;
 }
 
-const Home = async ({ params }: HomeProps) => {
-  const listings = await getListings(params);
+const Home = async ({ searchParams }: HomeProps) => {
+  const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
   if (listings.length === 0) {
