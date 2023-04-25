@@ -24,8 +24,6 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onChange, value }) => {
     [onChange]
   );
 
-  console.log("value", value);
-
   return (
     <CldUploadWidget
       onUpload={handleUpload}
