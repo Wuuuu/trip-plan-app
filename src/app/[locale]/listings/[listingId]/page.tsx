@@ -1,8 +1,8 @@
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import getListingById from "@/app/actions/getListingById";
 
-import ClinetOnly from "@/app/compoments/ClientOnly";
-import EmptyState from "@/app/compoments/EmptyState";
+import ClinetOnly from "@/app/[locale]/compoments/ClientOnly";
+import EmptyState from "@/app/[locale]/compoments/EmptyState";
 import ListingClient from "./ListingClient";
 
 interface IParams {
