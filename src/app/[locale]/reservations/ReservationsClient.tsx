@@ -6,9 +6,9 @@ import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { SafeReservation, SafeUser } from "@/app/types";
-import Heading from "@/app/compoments/Heading";
-import Container from "@/app/compoments/Container";
-import ListingCard from "@/app/compoments/listings/ListingCard";
+import Heading from "@/app/[locale]/compoments/Heading";
+import Container from "@/app/[locale]/compoments/Container";
+import ListingCard from "@/app/[locale]/compoments/listings/ListingCard";
 
 interface ReservationsClientProps {
   reservations: SafeReservation[];

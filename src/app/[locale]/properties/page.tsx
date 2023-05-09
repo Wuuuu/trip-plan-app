@@ -1,5 +1,5 @@
-import EmptyState from "@/app/compoments/EmptyState";
-import ClientOnly from "@/app/compoments/ClientOnly";
+import EmptyState from "@/app/[locale]/compoments/EmptyState";
+import ClientOnly from "@/app/[locale]/compoments/ClientOnly";
 
 import getCurrentUser from "@/app/actions/getCurrentUser";
 import getListings from "@/app/actions/getListings";

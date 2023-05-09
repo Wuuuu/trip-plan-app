@@ -20,6 +20,8 @@ import { IoDiamond } from "react-icons/io5";
 import CategoriesBox from "../CategoriesBox";
 import { usePathname, useSearchParams } from "next/navigation";
 
+import { useLocale } from "next-intl";
+
 export const categories = [
   {
     label: "Beach",
@@ -99,11 +101,11 @@ export const categories = [
 ];
 
 const Categories = () => {
+  const local = useLocale();
   const params = useSearchParams();
   const category = params?.get("category");
   const pathname = usePathname();
-
-  const isIndexPage = pathname === "/";
+  const isIndexPage = pathname === "/" || pathname === `/${local}`;
 
   if (!isIndexPage) {
     return null;
