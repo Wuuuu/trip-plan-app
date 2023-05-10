@@ -20,7 +20,7 @@ import { IoDiamond } from "react-icons/io5";
 import CategoriesBox from "../CategoriesBox";
 import { usePathname, useSearchParams } from "next/navigation";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 export const categories = [
   {
@@ -101,6 +101,7 @@ export const categories = [
 ];
 
 const Categories = () => {
+  const t = useTranslations("Navbar");
   const local = useLocale();
   const params = useSearchParams();
   const category = params?.get("category");
@@ -118,6 +119,9 @@ const Categories = () => {
           <CategoriesBox
             key={item.label}
             label={item.label}
+            text={t(
+              item.label.replace(item.label[0], item.label[0].toLowerCase())
+            )}
             selected={category === item.label}
             icon={item.icon}
           />

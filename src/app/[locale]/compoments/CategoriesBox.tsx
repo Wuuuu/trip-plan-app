@@ -8,12 +8,14 @@ import { IconType } from "react-icons";
 interface CategoriesBoxProps {
   icon: IconType;
   label: string;
+  text: string;
   selected?: boolean;
 }
 
 const CategoriesBox: React.FC<CategoriesBoxProps> = ({
   icon: Icon,
   label,
+  text,
   selected,
 }) => {
   const router = useRouter();
@@ -53,7 +55,7 @@ const CategoriesBox: React.FC<CategoriesBoxProps> = ({
         ${selected ? "text-neutral-800" : "text-neutral-500"}`}
     >
       <Icon size={26} />
-      <div className="font-medium text-sm">{label}</div>
+      <div className="font-medium text-sm">{text}</div>
     </div>
   );
 };
