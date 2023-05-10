@@ -1,5 +1,29 @@
 {
   "UserMenu": {
-    "tripYourHome": "Trip your home"
+    "tripYourHome": "Trip your home",
+    "myTrip": "My trips",
+    "myFavorites": "My favorites",
+    "myReservations": "My reservations",
+    "myProperties": "My properties",
+    "login": "Login",
+    "logout": "Logout",
+    "signUp": "Sign up"
+  },
+  "Navbar": {
+    "beach": "Beach",
+    "windmills": "Windmills",
+    "modern": "Modern",
+    "countryside": "Countryside",
+    "pools": "Pools",
+    "islands": "Islands",
+    "lake": "Lake",
+    "skiing": "Skiing",
+    "castles": "Castles",
+    "caves": "Caves",
+    "camping": "Camping",
+    "arctic": "Arctic",
+    "desert": "Desert",
+    "barns": "Barns",
+    "lux": "Lux"
   }
 }
