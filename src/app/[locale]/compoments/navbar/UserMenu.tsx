@@ -14,6 +14,7 @@ import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
 
 import { useTranslations } from "next-intl";
+import SelectLang from "./SelectLang";
 
 interface UserMenuProps {
   currentUser?: SafeUser | null;
@@ -43,7 +44,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
 
   return (
     <div className="relative">
-      <div className="flex flexr items-center gap-3">
+      <div className="flex flex-row items-center gap-3">
         <div
           className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer"
           onClick={onRent}
@@ -59,6 +60,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
             <Avatar src={currentUser?.image} />
           </div>
         </div>
+        <SelectLang />
       </div>
       {isOpen && (
         <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
