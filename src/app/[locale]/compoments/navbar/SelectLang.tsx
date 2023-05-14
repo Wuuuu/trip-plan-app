@@ -3,15 +3,12 @@
 import { useState, useCallback } from "react";
 import { useRouter, usePathname } from "next/navigation";
 
-import { AiOutlineMenu } from "react-icons/ai";
 import { HiLanguage } from "react-icons/hi2";
 import MenuItem from "./MenuItem";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 const SelectLang = ({}) => {
-  const t = useTranslations("SelectLang");
-
   const local = useLocale();
   const router = useRouter();
   const pathname = usePathname();
