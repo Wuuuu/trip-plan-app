@@ -25,5 +25,10 @@
     "desert": "Desert",
     "barns": "Barns",
     "lux": "Lux"
+  },
+  "EmptyPage": {
+    "title": "No exact matches",
+    "subTitle": "Try changing or removing some of you filters",
+    "clearFilter": "Remove all filters"
   }
 }

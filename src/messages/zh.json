@@ -25,5 +25,10 @@
     "desert": "沙漠",
     "barns": "农村",
     "lux": "Lux"
+  },
+  "EmptyPage": {
+    "title": "暂无查询数据",
+    "subTitle": "修改查询项或者清空查询栏",
+    "clearFilters": "清空查询"
   }
 }
